@@ -37,7 +37,7 @@
                 <div class="mb-3">
                     <label for="no_hp" class="form-label">No HP</label>
                     <input type="number" class="form-control @error('no_hp') is-invalid @enderror" name="no_hp"
-                        id="no_hp" value="{{ old('no_hp') }}">
+                        min="0" id="no_hp" value="{{ old('no_hp') }}">
                     @error('no_hp')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -57,7 +57,7 @@
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control @error('password') is-invalid @enderror" name="password"
-                        id="password">
+                        id="password" value="{{ old('password') }}">
                     @error('password')
                         <div class="invalid-feedback">
                             {{ $message }}

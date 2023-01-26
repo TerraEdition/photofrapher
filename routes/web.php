@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PackageController;
@@ -26,17 +27,17 @@ Route::middleware(['auth', 'is.user'])->group(function () {
 
 Route::middleware(['guest'])->group(function () {
     Route::prefix('/login')->group(function () {
-        Route::get('/', [HomeController::class, 'login'])->name('login');
-        Route::put('/', [HomeController::class, 'store_login']);
+        Route::get('/', [AuthController::class, 'login'])->name('login');
+        Route::put('/', [AuthController::class, 'store_login']);
     });
     Route::prefix('/register')->group(function () {
-        Route::get('/', [HomeController::class, 'register']);
-        Route::post('/', [HomeController::class, 'store_register']);
+        Route::get('/', [AuthController::class, 'register']);
+        Route::post('/', [AuthController::class, 'store_register']);
     });
 });
 
 
-Route::get('/logout', [HomeController::class, 'logout'])->middleware('auth');
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
 Route::middleware(['auth', 'is.admin'])->group(function () {
     Route::get('/dashboard', function () {

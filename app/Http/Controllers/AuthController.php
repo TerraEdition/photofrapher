@@ -24,6 +24,7 @@ class AuthController extends Controller
             $data->email = $req->email;
             $data->phone = $req->no_hp;
             $data->password = Hash::make($req->password);
+            $data->save();
             session()->flash('msg', 'Akun Berhasil Mendaftar');
             session()->flash('bg', 'alert-success');
             return redirect()->to('login');
