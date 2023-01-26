@@ -22,7 +22,7 @@
     <nav class="navbar fw-bold fixed-top text-light navbar-expand-md opacity-75" data-bs-theme="dark"
         style="background: black">
         <div class="container m-3">
-            <a class="navbar-brand" href="#home">{{ env('APP_NAME') }}</a>
+            <a class="navbar-brand" href="{{ !Route::is('home') ? '/' : '' }}#home">{{ env('APP_NAME') }}</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
