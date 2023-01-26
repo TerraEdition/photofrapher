@@ -18,7 +18,7 @@
     </style>
 </head>
 
-<body class="overflow-x-hidden">
+<body class="overflow-x-hidden d-flex flex-column" style="min-height:100vh;">
     <nav class="navbar fw-bold fixed-top text-light navbar-expand-md opacity-75" data-bs-theme="dark"
         style="background: black">
         <div class="container m-3">
@@ -32,16 +32,16 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page"
-                            href="{{ Route::is('login') || Route::is('register') ? '/' : '' }}#paket">Paket</a>
+                            href="{{ !Route::is('home') ? '/' : '' }}#paket">Paket</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page"
-                            href="{{ Route::is('login') || Route::is('register') ? '/' : '' }}#tentang-saya">Tentang
+                            href="{{ !Route::is('home') ? '/' : '' }}#tentang-saya">Tentang
                             Saya</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" aria-current="page"
-                            href="{{ Route::is('login') || Route::is('register') ? '/' : '' }}#gallery">Gallery</a>
+                            href="{{ !Route::is('home') ? '/' : '' }}#gallery">Gallery</a>
                     </li>
                     @if (Auth::user())
                         @if (Auth::user()->role == 'admin')
@@ -71,7 +71,7 @@
     <div data-bs-spy="scroll" data-bs-smooth-scroll="true" tabindex="0">
         @yield('content')
     </div>
-    <footer id="footer" class="bg-dark text-center text-light p-3">
+    <footer id="footer" class="footer mt-auto bg-dark text-center text-light p-3">
         &#169; {{ date('Y') }} Copyright: {{ env('APP_NAME') }}
     </footer>
 

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\View\Components\FormChangePassword;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class HelperServiceProvider extends ServiceProvider
@@ -24,6 +26,6 @@ class HelperServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Blade::component('form-change-password', FormChangePassword::class);
     }
 }

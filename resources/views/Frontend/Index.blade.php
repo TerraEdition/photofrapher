@@ -35,27 +35,25 @@
             Harga Paket
         </div>
         <div class="row">
-            @for ($i = 1; $i < 8; $i++)
+            @foreach ($paket as $r)
                 <div class="col-3 col-sm-4 mb-4">
                     <div class="card">
                         <div class="card-header">
                             <div class="d-flex justify-content-between">
-                                <h6>Paket</h6>
-                                <small class="fw-bold">Rp. 1000</small>
+                                <h6>{{ $r->package }}</h6>
+                                <small class="fw-bold">{{ currency($r->price) }}</small>
                             </div>
                         </div>
                         <div class="card-body">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur consequatur iure voluptatum
-                            molestias, earum delectus deserunt aut magnam corrupti vitae quia, ea dolore amet quo commodi
-                            minus
-                            qui totam quibusdam.
+                            {{ $r->note }}
                         </div>
                         <div class="card-footer">
-                            <button class="btn btn-warning text-light form-control">Pesan Sekarang</button>
+                            <a href="/cart/{{ $r->slug }}" class="btn btn-warning text-light form-control">Pesan
+                                Sekarang</a>
                         </div>
                     </div>
                 </div>
-            @endfor
+            @endforeach
         </div>
     </section>
     <section class="bg-dark mt-4 pt-2" id="tentang-saya">

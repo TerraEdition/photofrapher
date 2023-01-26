@@ -17,7 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::middleware(['auth', 'is.user'])->group(function () {
+    Route::get('/account', [HomeController::class, 'account']);
+    Route::get('/cart/{slug}', [HomeController::class, 'cart']);
+});
 
 Route::middleware(['guest'])->group(function () {
     Route::prefix('/login')->group(function () {
@@ -25,7 +30,7 @@ Route::middleware(['guest'])->group(function () {
         Route::put('/', [HomeController::class, 'store_login']);
     });
     Route::prefix('/register')->group(function () {
-        Route::get('/', [HomeController::class, 'register'])->name('register');
+        Route::get('/', [HomeController::class, 'register']);
         Route::post('/', [HomeController::class, 'store_register']);
     });
 });
@@ -34,11 +39,9 @@ Route::middleware(['guest'])->group(function () {
 Route::get('/logout', [HomeController::class, 'logout'])->middleware('auth');
 
 Route::middleware(['auth', 'is.admin'])->group(function () {
-
     Route::get('/dashboard', function () {
         return view('Backend.Dashboard');
     });
-
     Route::prefix('/booking')->group(function () {
         Route::get('/', [BookingController::class, 'index']);
         Route::get('/create', [BookingController::class, 'create']);

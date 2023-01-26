@@ -8,7 +8,7 @@
 @endsection
 @section('content')
     <div class="container mt-5">
-        <div class="border border-2 bg-dark text-light border-warning p-4" id="form">
+        <div class="bg-light border border-3 border-dark p-4" id="form">
             @if (session()->has('msg'))
                 <div class="alert {{ session()->get('bg') }}">{{ session()->get('msg') }}</div>
             @endif
