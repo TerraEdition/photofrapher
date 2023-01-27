@@ -1,7 +1,8 @@
 ## Persiapan
 - Membutuhkan XAMPP
 - Membutuhkan Composer
-- Membutuhkan Node JS
+- Membutuhkan Node JS (Optional)
+- Membutuhkan Git (Optional)
 
 ## Cara Penggunaan
 
