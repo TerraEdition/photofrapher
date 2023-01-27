@@ -1,3 +1,8 @@
+## Persiapan
+- Membutuhkan XAMPP
+- Membutuhkan Composer
+- Membutuhkan Node JS
+
 ## Cara Penggunaan
 
 -   Buka Xampp, Jalankan PHP dan MySQL
