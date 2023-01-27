@@ -16,6 +16,7 @@
     -   composer install
     -   copy .env.example .env
     -   php artisan key:generate
+    -   php artisan storage:link
     -   php artisan migrate => untuk membuat table ke database
     -   php artisan db:seed --class=DatabaseSeeder => untuk menambah data demo ke table
     -   php artisan serve => untuk menjalankan aplikasi
