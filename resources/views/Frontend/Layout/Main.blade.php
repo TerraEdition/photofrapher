@@ -76,6 +76,7 @@
     </footer>
 
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/scripts.js') }}"></script>
 
     @yield('scripts')
 </body>

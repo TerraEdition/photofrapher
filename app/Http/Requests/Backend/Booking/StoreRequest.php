@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Package;
+namespace App\Http\Requests\Backend\Booking;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,15 +24,9 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'paket' => 'required|max:100|unique:packages.package',
-            'harga' => 'required|numeric|min:1000'
-        ];
-    }
-    public function attributes()
-    {
-        return [
-            'paket'   => 'Nama Paket',
-            'harga'   => 'Harga Paket',
+            'tanggal' => 'required|date',
+            'jam' => 'required',
+            'lokasi' => 'required'
         ];
     }
 }

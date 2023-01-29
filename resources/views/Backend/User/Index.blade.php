@@ -48,11 +48,13 @@
                         <td>{{ date_indo($item->updated_at) }}</td>
                         <td>
                             <a href="/users/edit/{{ $item->slug }}" class="d-inline btn btn-sm m-1 btn-primary">Ubah</a>
-                            <form action="/users/delete/{{ $item->slug }}" method="post" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm m-1 btn-danger">Hapus</button>
-                            </form>
+                            @if (fk_user($item->slug))
+                                <form action="/users/delete/{{ $item->slug }}" method="post" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm m-1 btn-danger">Hapus</button>
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @endforeach

@@ -2,6 +2,9 @@
 @section('title', 'Pengguna')
 @section('content')
     <h3 class="mb-2">Ubah Pengguna</h3>
+    @if (session()->has('msg'))
+        <div class="alert {{ session()->get('bg') }}">{{ session()->get('msg') }}</div>
+    @endif
     <form action="" method="POST">
         @csrf
         @method('PUT')
@@ -20,6 +23,16 @@
             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
                 autocomplete="off" name="email" value="{{ old('email', $data->email) }}">
             @error('email')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="no_hp" class="form-label">No HP</label>
+            <input type="number" class="form-control @error('no_hp') is-invalid @enderror" id="no_hp"
+                autocomplete="off" name="no_hp" value="{{ old('no_hp', $data->phone) }}" min='0'>
+            @error('no_hp')
                 <div class="invalid-feedback">
                     {{ $message }}
                 </div>

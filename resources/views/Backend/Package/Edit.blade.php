@@ -2,6 +2,9 @@
 @section('title', 'Paket')
 @section('content')
     <h3 class="mb-2">Ubah Paket</h3>
+    @if (session()->has('msg'))
+        <div class="alert {{ session()->get('bg') }}">{{ session()->get('msg') }}</div>
+    @endif
     <form action="" method="POST">
         @csrf
         @method('PUT')

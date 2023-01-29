@@ -25,7 +25,7 @@
                     <p class="text-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae qui
                         porro quis.
                     </p>
-                    <button class="btn btn-warning text-light">Lihat Paket</button>
+                    <a class="btn text-light btn-warning"href="#paket">Lihat Paket</a>
                 </div>
             </div>
         </div>

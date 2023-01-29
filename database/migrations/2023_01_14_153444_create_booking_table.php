@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('package_id');
-            $table->dateTime('date');
+            $table->date('date');
+            $table->time('time');
             $table->string('locate', 100);
+            $table->text('note');
             $table->string('slug', 150);
-            $table->enum('status', ['true', 'false']);
+            $table->char('status', 1);
             $table->timestamps();
         });
     }

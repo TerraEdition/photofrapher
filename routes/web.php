@@ -22,7 +22,9 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth', 'is.user'])->group(function () {
     Route::get('/account', [HomeController::class, 'account']);
+    Route::get('/account/delete/{slug}', [HomeController::class, 'cancel_cart']);
     Route::get('/cart/{slug}', [HomeController::class, 'cart']);
+    Route::post('/cart/{slug}', [HomeController::class, 'store_cart']);
 });
 
 Route::middleware(['guest'])->group(function () {
@@ -38,6 +40,7 @@ Route::middleware(['guest'])->group(function () {
 
 
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::post('/change-password', [UserController::class, 'update_password'])->middleware('auth');
 
 Route::middleware(['auth', 'is.admin'])->group(function () {
     Route::get('/dashboard', function () {

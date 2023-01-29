@@ -1,59 +1,42 @@
 @extends('Frontend.Layout.Main')
 @section('content')
-    <div style="margin: 10% 0">
-        <div class="container">
-            <x-FormChangePassword />
-            <div class="table-responsive mt-4">
-                <table class="table">
-                    <thead>
+    <div class="container" style="margin-top: 10%">
+        <x-FormChangePassword />
+        @if (session()->has('msg'))
+            <div class="alert mt-3 {{ session()->get('bg') }}">{{ session()->get('msg') }}</div>
+        @endif
+        <div class="table-responsive mt-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Tanggal Acara</th>
+                        <th>Lokasi</th>
+                        <th>Paket</th>
+                        <th>Status</th>
+                        <th>Tanggal Modifikasi</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach ($booking as $item)
                         <tr>
-                            <th>#</th>
-                            <th>Tanggal Acara</th>
-                            <th>Paket</th>
-                            <th>Status</th>
-                            <th>Aksi</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1.</td>
-                            <td>20 Januri 2023</td>
-                            <td>Paket 1</td>
+                            <td>{{ $loop->iteration }} {!! hasNote($item->note) !!}</td>
+                            <td>{{ date_indo($item->date . ' ' . $item->time) }}</td>
+                            <td>{{ $item->locate }}</td>
+                            <td>{{ $item->Package->package }}</td>
                             <td>
-                                <div class="badge bg-success w-100"> Selesai </div>
+                                {!! badgeStatus($item->status) !!}
                             </td>
-                            <td><button class="btn btn-outline-success btn-sm">Gallery</button></td>
-                        </tr>
-                        <tr>
-                            <td>2.</td>
-                            <td>27 February 2023</td>
-                            <td>Paket 2</td>
+                            <td>{{ date_indo($item->updated_at) }}</td>
                             <td>
-                                <div class="badge bg-primary w-100"> Pemesanan </div>
+                                {!! buttonStatus($item->status, $item->slug) !!}
                             </td>
-                            <td><button class="btn btn-outline-danger btn-sm">Batal</button></td>
                         </tr>
-                        <tr>
-                            <td>3.</td>
-                            <td>27 February 2023</td>
-                            <td>Paket 2</td>
-                            <td>
-                                <div class="badge w-100" style="background: purple"> Telah Terima </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>4.</td>
-                            <td>27 February 2023</td>
-                            <td>Paket 1</td>
-                            <td>
-                                <div class="badge bg-dark w-100"> Batal </div>
-                            </td>
-                            <td></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection

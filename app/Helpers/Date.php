@@ -7,7 +7,7 @@ if (!function_exists('date_indo')) {
         }
         $ex = explode(" ", $date);
         $d = explode("-", $ex[0]);
-        return $d[2] . ' ' . month($d[1]) . ' ' . $d[0] . ' / ' . $ex[1];
+        return $d[2] . ' ' . month((int)$d[1]) . ' ' . $d[0] . (count($ex) > 1 ? ' / ' . $ex[1] : '');
     }
 }
 

@@ -15,6 +15,7 @@ class PackageController extends Controller
             'data' => Package::where('package', 'like', '%' . $req->package . '%')
                 ->where('price', 'like', '%' . $req->price . '%')
                 ->where('updated_at', 'like', '%' . $req->updated_at . "%")
+                ->orderBy('id', 'desc')
                 ->paginate(10),
         ];
         return view('Backend.Package.Index', $data);
@@ -24,7 +25,7 @@ class PackageController extends Controller
     {
         return view('Backend.Package.Create');
     }
-    public function store(Request $req)
+    public function store(StoreRequest $req)
     {
         try {
             $data = new Package();
@@ -46,12 +47,14 @@ class PackageController extends Controller
         $data = [
             'data' => Package::where('slug', $slug)->first(),
         ];
+        if (empty($data['data'])) abort(404);
         return view('Backend.Package.Edit', $data);
     }
-    public function update(Request $req, $slug)
+    public function update(UpdateRequest $req, $slug)
     {
         try {
             $data = Package::where('slug', $slug)->first();
+            if (empty($data)) abort(404);
             $data->package = $req->paket;
             $data->price = $req->harga;
             $data->note = $req->keterangan;

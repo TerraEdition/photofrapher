@@ -2,7 +2,7 @@
 @section('styles')
     <style>
         #form {
-            margin: 10% 0
+            margin: 10% 0;
         }
     </style>
 @endsection
