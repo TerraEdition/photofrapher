@@ -90,6 +90,10 @@ class UserController extends Controller
         }
         return redirect()->back();
     }
+    public function edit_password()
+    {
+        return view('Backend.User.Change-Password');
+    }
     public function update_password(PasswordRequest $req)
     {
         try {

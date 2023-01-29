@@ -25,7 +25,7 @@
                         Akun
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/profile">Profil</a></li>
+                        <li><a class="dropdown-item" href="/change-password">Ganti Password</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>

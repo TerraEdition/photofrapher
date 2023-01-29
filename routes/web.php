@@ -46,6 +46,7 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
     Route::get('/dashboard', function () {
         return view('Backend.Dashboard');
     });
+    Route::get('/change-password', [UserController::class, 'edit_password']);
     Route::prefix('/booking')->group(function () {
         Route::get('/', [BookingController::class, 'index']);
         Route::get('/create', [BookingController::class, 'create']);
