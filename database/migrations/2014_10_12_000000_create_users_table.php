@@ -32,6 +32,7 @@ return new class extends Migration
             [
                 'name' => 'Administrator',
                 'email' => 'admin@gmail.com',
+                'phone' => '081923432391',
                 'username' => 'admin',
                 'password' => Hash::make('1122'),
                 'role' => 'admin',
@@ -40,6 +41,7 @@ return new class extends Migration
             [
                 'name' => 'Regular User',
                 'email' => 'user@gmail.com',
+                'phone' => '081212341234',
                 'username' => 'user',
                 'password' => Hash::make('1122'),
                 'role' => 'user',

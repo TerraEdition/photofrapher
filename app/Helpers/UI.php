@@ -41,22 +41,22 @@ if (!function_exists('badgeStatus')) {
     {
         switch ($val) {
             case '1':
-                $btn = "<div class='badge bg-info'>Menunggu Proses</div>";
+                $btn = "<div class='badge bg-info'>Menunggu di Terima</div>";
                 break;
             case '2':
-                $btn = "<div class='badge bg-success'>Sedang di Proses</div>";
+                $btn = "<div class='badge bg-success'>Pemesanan di Terima, Hubungi Pelanggan</div>";
                 break;
             case '3':
                 $btn = "<div class='badge bg-warning'>Menunggu Bukti Pembayaran</div>";
                 break;
             case '4':
-                $btn = "<div class='badge bg-success'>Pesanan di Setujui</div>";
+                $btn = "<div class='badge bg-success'>Pemesanan Telah di Setujui</div>";
                 break;
             case '5':
-                $btn = "<div class='badge bg-success'>Selesai</div>";
+                $btn = "<div class='badge bg-success'>Pemesanan Selesai</div>";
                 break;
             default:
-                $btn = "<div class='badge bg-dark'>Batal</div>";
+                $btn = "<div class='badge bg-dark'>Pemesanan di Batalkan</div>";
                 break;
         }
         return $btn;
@@ -71,10 +71,10 @@ if (!function_exists('buttonStatus')) {
                 $btn = "<a href='" . Request::url() . "/delete/" . $id . "' class='badge bg-danger text-decoration-none'>Batal</a>";
                 break;
             case '3':
-                $btn = "<a href='" . Request::url() . "/payment/" . $id . "' class='badge bg-primary text-decoration-none'>Upload Bukti Pembayaran</a>";
+                $btn =  "<x-UploadPayment />";
                 break;
             case '5':
-                $btn = "<a href='" . Request::url() . "/payment/" . $id . "' class='badge bg-success text-decoration-none'>Gallery</a>";
+                $btn = "<a href='" . Request::url() . "/gallery/" . $id . "' class='badge bg-success text-decoration-none'>Gallery</a>";
                 break;
 
             default:

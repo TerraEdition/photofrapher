@@ -20,7 +20,8 @@ return new class extends Migration
             $table->date('date');
             $table->time('time');
             $table->string('locate', 100);
-            $table->text('note');
+            $table->text('note')->nullable();
+            $table->string('payment', 30)->nullable();
             $table->string('slug', 150);
             $table->char('status', 1);
             $table->timestamps();

@@ -27,7 +27,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->configureRateLimiting();
-
         $this->routes(function () {
             Route::middleware('api')
                 ->prefix('api')
@@ -36,6 +35,8 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->group(base_path('routes/web.php'));
         });
+        Route::pattern('slug', '[a-z0-9\-]+');
+        Route::pattern('status', '^[0-9]{1}$');
     }
 
     /**

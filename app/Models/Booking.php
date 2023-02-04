@@ -27,4 +27,13 @@ class Booking extends Model
     {
         return $this->belongsTo(Package::class,  'package_id', 'id');
     }
+    /**
+     * Get the user that owns the Booking
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function User()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

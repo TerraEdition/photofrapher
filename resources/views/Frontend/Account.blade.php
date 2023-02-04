@@ -1,10 +1,13 @@
 @extends('Frontend.Layout.Main')
 @section('content')
     <div class="container" style="margin-top: 10%">
-        <x-FormChangePassword />
         @if (session()->has('msg'))
             <div class="alert mt-3 {{ session()->get('bg') }}">{{ session()->get('msg') }}</div>
         @endif
+        <div class="d-flex my-3 justify-content-between">
+            <h3>Riwayat Transaksi</h3>
+            <x-FormChangePassword />
+        </div>
         <div class="table-responsive mt-4">
             <table class="table">
                 <thead>

@@ -54,7 +54,7 @@ class HomeController extends Controller
         } catch (\Throwable $th) {
             session()->flash('msg', 'Terjadi Kesalahan Pada Saat Menyimpan Data');
             session()->flash('bg', 'alert-danger');
-            return redirect()->back();
+            return redirect()->back()->withInput();
         }
     }
     public function cancel_cart($slug)
@@ -63,7 +63,7 @@ class HomeController extends Controller
             $data = Booking::where('slug', $slug)->first();
             if (empty($data)) abort(404);
             $data->status = '0';
-            $data->note = "Pesanan telah dibatalkan pada tanggal " . date("Y-m-d H:i:s");
+            $data->note = "Pesanan telah dibatalkan pada tanggal " . date("Y-m-d H:i:s") . " Oleh Pengguna";
             $data->update();
             session()->flash('msg', 'Data Berhasil di Simpan');
             session()->flash('bg', 'alert-success');
