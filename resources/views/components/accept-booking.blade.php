@@ -6,6 +6,10 @@
                 Terima Pemesanan
             @elseif ($status == 2)
                 Minta Bukti Pembayaran
+            @elseif ($status == 4)
+                Terima Bukti Pembayaran
+            @elseif ($status == 5)
+                Acara Telah Selesai
             @endif
         </button>
     </form>

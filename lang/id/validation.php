@@ -24,7 +24,7 @@ return [
     'before_or_equal' => ':attribute harus berisi tanggal sebelum atau sama dengan :date.',
     'between'         => [
         'numeric' => ':attribute harus bernilai antara :min sampai :max.',
-        'file'    => ':attribute harus berukuran antara :min sampai :max kilobita.',
+        'file'    => ':attribute harus berukuran antara :min sampai :max kilobyte.',
         'string'  => ':attribute harus berisi antara :min sampai :max karakter.',
         'array'   => ':attribute harus memiliki :min sampai :max anggota.',
     ],
@@ -45,13 +45,13 @@ return [
     'filled'         => ':attribute harus memiliki nilai.',
     'gt'             => [
         'numeric' => ':attribute harus bernilai lebih besar dari :value.',
-        'file'    => ':attribute harus berukuran lebih besar dari :value kilobita.',
+        'file'    => ':attribute harus berukuran lebih besar dari :value kilobyte.',
         'string'  => ':attribute harus berisi lebih besar dari :value karakter.',
         'array'   => ':attribute harus memiliki lebih dari :value anggota.',
     ],
     'gte' => [
         'numeric' => ':attribute harus bernilai lebih besar dari atau sama dengan :value.',
-        'file'    => ':attribute harus berukuran lebih besar dari atau sama dengan :value kilobita.',
+        'file'    => ':attribute harus berukuran lebih besar dari atau sama dengan :value kilobyte.',
         'string'  => ':attribute harus berisi lebih besar dari atau sama dengan :value karakter.',
         'array'   => ':attribute harus terdiri dari :value anggota atau lebih.',
     ],
@@ -65,19 +65,19 @@ return [
     'json'     => ':attribute harus berupa JSON string yang valid.',
     'lt'       => [
         'numeric' => ':attribute harus bernilai kurang dari :value.',
-        'file'    => ':attribute harus berukuran kurang dari :value kilobita.',
+        'file'    => ':attribute harus berukuran kurang dari :value kilobyte.',
         'string'  => ':attribute harus berisi kurang dari :value karakter.',
         'array'   => ':attribute harus memiliki kurang dari :value anggota.',
     ],
     'lte' => [
         'numeric' => ':attribute harus bernilai kurang dari atau sama dengan :value.',
-        'file'    => ':attribute harus berukuran kurang dari atau sama dengan :value kilobita.',
+        'file'    => ':attribute harus berukuran kurang dari atau sama dengan :value kilobyte.',
         'string'  => ':attribute harus berisi kurang dari atau sama dengan :value karakter.',
         'array'   => ':attribute harus tidak lebih dari :value anggota.',
     ],
     'max' => [
         'numeric' => ':attribute maskimal bernilai :max.',
-        'file'    => ':attribute maksimal berukuran :max kilobita.',
+        'file'    => ':attribute maksimal berukuran :max kilobyte.',
         'string'  => ':attribute maskimal berisi :max karakter.',
         'array'   => ':attribute maksimal terdiri dari :max anggota.',
     ],
@@ -85,7 +85,7 @@ return [
     'mimetypes' => ':attribute harus berupa berkas berjenis: :values.',
     'min'       => [
         'numeric' => ':attribute minimal bernilai :min.',
-        'file'    => ':attribute minimal berukuran :min kilobita.',
+        'file'    => ':attribute minimal berukuran :min kilobyte.',
         'string'  => ':attribute minimal berisi :min karakter.',
         'array'   => ':attribute minimal terdiri dari :min anggota.',
     ],

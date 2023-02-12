@@ -30,5 +30,6 @@ class HelperServiceProvider extends ServiceProvider
     {
         Blade::component('form-change-password', FormChangePassword::class);
         Blade::component('reject-reason-booking', RejectReasonBooking::class);
+        Blade::component('payment-modal', PaymentModal::class);
     }
 }

@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Backend\Booking\StorePaymentRequest;
 use App\Http\Requests\Backend\Booking\StoreRequest;
 use App\Models\Booking;
 use App\Models\Package;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,7 +41,7 @@ class HomeController extends Controller
         try {
             $paket = Package::where('slug', $slug)->first();
             if (empty($paket)) abort(404);
-            $data = new Booking();
+            $data = Booking::where();
             $data->user_id = Auth::user()->id;
             $data->package_id = $paket->id;
             $data->date = $req->tanggal;
@@ -48,6 +50,26 @@ class HomeController extends Controller
             $data->status = '1';
             $data->note = $req->catatan;
             $data->save();
+            session()->flash('msg', 'Data Berhasil di Simpan');
+            session()->flash('bg', 'alert-success');
+            return redirect()->to('account');
+        } catch (\Throwable $th) {
+            session()->flash('msg', 'Terjadi Kesalahan Pada Saat Menyimpan Data');
+            session()->flash('bg', 'alert-danger');
+            return redirect()->back()->withInput();
+        }
+    }
+    public function store_payment(StorePaymentRequest $req, $slug)
+    {
+        try {
+            $data = Booking::where('slug', $slug)->first();
+            if (empty($data)) abort(404);
+            $data->user_id = Auth::user()->id;
+            $name = Carbon::now()->timestamp . '.' . $req->file('bukti')->getClientOriginalExtension();
+            $req->file('bukti')->storeAs('Payment/' . $slug, $name);
+            $data->payment = $name;
+            $data->status = '4';
+            $data->update();
             session()->flash('msg', 'Data Berhasil di Simpan');
             session()->flash('bg', 'alert-success');
             return redirect()->to('account');

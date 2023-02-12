@@ -44,15 +44,18 @@ if (!function_exists('badgeStatus')) {
                 $btn = "<div class='badge bg-info'>Menunggu di Terima</div>";
                 break;
             case '2':
-                $btn = "<div class='badge bg-success'>Pemesanan di Terima, Hubungi Pelanggan</div>";
+                $btn = "<div class='badge bg-success'>Pemesanan di Terima</div>";
                 break;
             case '3':
                 $btn = "<div class='badge bg-warning'>Menunggu Bukti Pembayaran</div>";
                 break;
             case '4':
-                $btn = "<div class='badge bg-success'>Pemesanan Telah di Setujui</div>";
+                $btn = "<div class='badge bg-success'>Bukti Pembayaran Sedang di Validasi</div>";
                 break;
             case '5':
+                $btn = "<div class='badge bg-success'>Pemesanan Telah di Setujui</div>";
+                break;
+            case '6':
                 $btn = "<div class='badge bg-success'>Pemesanan Selesai</div>";
                 break;
             default:
@@ -71,9 +74,9 @@ if (!function_exists('buttonStatus')) {
                 $btn = "<a href='" . Request::url() . "/delete/" . $id . "' class='badge bg-danger text-decoration-none'>Batal</a>";
                 break;
             case '3':
-                $btn =  "<x-UploadPayment />";
+                $btn =  "3";
                 break;
-            case '5':
+            case '6':
                 $btn = "<a href='" . Request::url() . "/gallery/" . $id . "' class='badge bg-success text-decoration-none'>Gallery</a>";
                 break;
 

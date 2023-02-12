@@ -24,6 +24,7 @@
                 <tbody>
 
                     @foreach ($booking as $item)
+                        @php($btnStat = buttonStatus($item->status, $item->slug))
                         <tr>
                             <td>{{ $loop->iteration }} {!! hasNote($item->note) !!}</td>
                             <td>{{ date_indo($item->date . ' ' . $item->time) }}</td>
@@ -34,7 +35,11 @@
                             </td>
                             <td>{{ date_indo($item->updated_at) }}</td>
                             <td>
-                                {!! buttonStatus($item->status, $item->slug) !!}
+                                @if ($btnStat == '3')
+                                    <x-UploadPayment :slug="$item->slug" />
+                                @else
+                                    {!! $btnStat !!}
+                                @endif
                             </td>
                         </tr>
                     @endforeach

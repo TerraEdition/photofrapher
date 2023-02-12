@@ -4,17 +4,17 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class UploadPayment extends Component
+class PaymentModal extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $slug;
-    public function __construct($slug)
+    public $url;
+    public function __construct($url)
     {
-        $this->slug = $slug;
+        $this->url = $url;
     }
 
     /**
@@ -24,6 +24,6 @@ class UploadPayment extends Component
      */
     public function render()
     {
-        return view('components.upload-payment');
+        return view('components.payment-modal');
     }
 }

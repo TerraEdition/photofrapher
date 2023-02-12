@@ -22,6 +22,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::middleware(['auth', 'is.user'])->group(function () {
     Route::get('/account', [HomeController::class, 'account']);
+    Route::post('/account/{slug}/4', [HomeController::class, 'store_payment']);
     Route::get('/account/delete/{slug}', [HomeController::class, 'cancel_cart']);
     Route::get('/cart/{slug}', [HomeController::class, 'cart']);
     Route::post('/cart/{slug}', [HomeController::class, 'store_cart']);

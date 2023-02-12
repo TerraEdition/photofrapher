@@ -23,6 +23,15 @@
                     <td>:</td>
                     <td>{{ $data->User->email }}</td>
                 </tr>
+                @if ($data->payment != '')
+                    <tr>
+                        <td>Butki Pembayaran</td>
+                        <td>:</td>
+                        <td>
+                            <x-PaymentModal :url="$data->slug . '/' . $data->payment" />
+                        </td>
+                    </tr>
+                @endif
             </table>
         </div>
         <div class="col col-sm-6 col-xs-12">
@@ -43,6 +52,11 @@
                     <td>{{ $data->locate }}</td>
                 </tr>
                 <tr>
+                    <td>Tanggal / Jam</td>
+                    <td>:</td>
+                    <td>{{ date_indo($data->date . ' ' . $data->time) }}</td>
+                </tr>
+                <tr>
                     <td>Status</td>
                     <td>:</td>
                     <td> {!! badgeStatus($data->status) !!}</td>
@@ -57,12 +71,17 @@
     </div>
     <div class="d-flex gap-3 d-flex justify-content-between">
         <div class="d-flex gap-3">
-            @if ($data->status == '1')
+            @if (in_array($data->status, ['1', '2', '4']))
                 <x-AcceptBooking :status="$data->status" />
                 <x-RejectReasonBooking />
-            @elseif($data->status == '2')
-                <x-AcceptBooking :status="$data->status" />
-                <x-RejectReasonBooking />
+            @elseif ($data->status == '5')
+                @if (strtotime($data->date . ' ' . $data->time) < strtotime(date('Y-m-d H:i:s')))
+                    <x-AcceptBooking :status="$data->status" />
+                @else
+                    <div class="text-danger">Acara Belum di Mulai</div>
+                @endif
+            @elseif($data->status == '6')
+                <a href="{{ Request::url }}/gallery" target="_blank">Gallery</a>
             @endif
         </div>
         <a href="/booking" class="btn btn-danger">Kembali</a>
