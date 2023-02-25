@@ -45,6 +45,7 @@
                         }
                     },
                     series: [{
+                        name: 'Status',
                         data: [
                             data[0][0]['total'], data[1][0]['total'], data[2][0]['total'],
                         ]
