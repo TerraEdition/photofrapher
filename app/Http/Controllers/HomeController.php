@@ -32,6 +32,7 @@ class HomeController extends Controller
     public function store_cart(StoreRequest $req, $slug)
     {
         /* status
+        0 => batal
         1 => mulai pesan
         2 => pesanan diterima
         3 => menunggu bukti pembayaran
@@ -45,6 +46,7 @@ class HomeController extends Controller
             $data->user_id = Auth::user()->id;
             $data->package_id = $paket->id;
             $data->date = $req->tanggal;
+            $data->created_at = date("Y-m-d");
             $data->time = $req->jam;
             $data->locate = $req->lokasi;
             $data->status = '1';

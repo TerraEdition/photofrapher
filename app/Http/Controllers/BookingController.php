@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 
 class BookingController extends Controller
 {
@@ -65,5 +67,26 @@ class BookingController extends Controller
             session()->flash('bg', 'alert-danger');
             return redirect()->back();
         }
+    }
+
+    public function chart($month)
+    {
+        $status = ['0', '5', '6'];
+        $month = explode('-', $month);
+        $data = [];
+        foreach ($status as $k => $s) {
+            $da = Booking::select(DB::raw('count(id) as total'))
+                ->where(DB::raw("MONTH(created_at)"), $month[1])
+                ->where(DB::raw("YEAR(created_at)"), $month[0]);
+            if ($k == 1) {
+                $da->where('status', '>=', '1');
+                $da->where('status', '<=', '5');
+            } else {
+                $da->where('status', $s);
+            }
+            $data[$k] = $da->get();
+        }
+
+        return Response::json($data);
     }
 }
