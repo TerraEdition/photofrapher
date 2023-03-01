@@ -4,11 +4,19 @@
         #form {
             margin: 10% 0;
         }
+
+        body {
+            background: linear-gradient(rgba(0, 0, 0, 0.1),
+                    rgba(0, 0, 0, 0.1)),
+                url("{{ asset('storage/Config/login.webp') }}");
+            background-size: cover;
+            background-position: center;
+        }
     </style>
 @endsection
 @section('content')
-    <div class="container mt-5">
-        <div class="bg-light border border-3 border-dark p-4" id="form">
+    <div class="container mt-5 d-flex justify-content-left">
+        <div class="bg-light border border-3 border-secondary w-50 p-4" id="form">
             @if (session()->has('msg'))
                 <div class="alert {{ session()->get('bg') }}">{{ session()->get('msg') }}</div>
             @endif
