@@ -74,7 +74,9 @@
     <footer id="footer" class="footer mt-auto bg-dark text-center text-light p-3">
         &#169; {{ date('Y') }} Copyright: {{ env('APP_NAME') }}
     </footer>
-
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/scripts.js') }}"></script>
 
