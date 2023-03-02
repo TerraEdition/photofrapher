@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Backend\Booking\StorePaymentRequest;
 use App\Http\Requests\Backend\Booking\StoreRequest;
 use App\Models\Booking;
+use App\Models\Gallery;
 use App\Models\Package;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use ZipArchive;
 
 class HomeController extends Controller
 {
@@ -105,5 +108,31 @@ class HomeController extends Controller
             'booking' => Booking::with('Package:id,package')->where('user_id', Auth::user()->id)->orderBy('id', 'desc')->paginate(10),
         ];
         return view('Frontend.Account', $data);
+    }
+
+    public function gallery($slug)
+    {
+        $booking = Booking::with('Package:id,package')->where('slug', $slug)->where('user_id', Auth::user()->id)->first();
+        $data = [
+            'data' => $booking,
+            'gallery' => Gallery::where('booking_id', $booking->id)->get(),
+            'slug' => $slug,
+        ];
+        return view('Frontend.Gallery', $data);
+    }
+    public function download_gallery($slug)
+    {
+        $zip = new ZipArchive();
+        $fileName = 'gallery.zip';
+        if ($zip->open(public_path($fileName), \ZipArchive::CREATE) == TRUE) {
+            $files = File::files(public_path('storage/gallery/' . $slug));
+            foreach ($files as $key => $value) {
+                $relativeName = basename($value);
+                $zip->addFile($value, $relativeName);
+            }
+            $zip->close();
+        }
+
+        return response()->download(public_path($fileName));
     }
 }
