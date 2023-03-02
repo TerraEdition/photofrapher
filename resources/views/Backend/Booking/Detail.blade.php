@@ -81,7 +81,7 @@
                     <div class="text-danger">Acara Belum di Mulai</div>
                 @endif
             @elseif($data->status == '6')
-                <a href="{{ Request::url }}/gallery" target="_blank">Gallery</a>
+                <a href="{{ Request::url() }}/gallery" class="btn btn-primary">Tambah Asset</a>
             @endif
         </div>
         <a href="/booking" class="btn btn-danger">Kembali</a>

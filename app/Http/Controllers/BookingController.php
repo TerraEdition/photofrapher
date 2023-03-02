@@ -61,12 +61,11 @@ class BookingController extends Controller
             $data->update();
             session()->flash('msg', 'Data Berhasil di Ubah');
             session()->flash('bg', 'alert-success');
-            return redirect()->to('booking');
         } catch (\Throwable $th) {
             session()->flash('msg', 'Terjadi Kesalahan Pada Saat Menyimpan Data ');
             session()->flash('bg', 'alert-danger');
-            return redirect()->back();
         }
+        return redirect()->back();
     }
 
     public function chart($month)
@@ -88,5 +87,17 @@ class BookingController extends Controller
         }
 
         return Response::json($data);
+    }
+
+    public function gallery($slug)
+    {
+        $data = [
+            'data' => Booking::with(['User:id,name,phone,email', 'Package:id,package,price'])
+                ->where('slug', $slug)
+                ->orderBy('id', 'desc')
+                ->first(),
+            'slug' => $slug
+        ];
+        return view("Backend.Booking.Gallery", $data);
     }
 }
