@@ -8,7 +8,7 @@
             <h3>Riwayat Transaksi</h3>
             <div>
                 <x-FormChangePassword />
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Alur Kerja Kami
                 </button>
             </div>

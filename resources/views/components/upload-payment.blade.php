@@ -14,7 +14,8 @@
                 <div class="modal-body">
                     <input type="hidden" name="status" value="0">
                     <div class="mb-4">
-                        <input type="file" name="bukti" class="form-control @error('bukti') is-invalid @enderror ">
+                        <input type="file" name="bukti" class="form-control @error('bukti') is-invalid @enderror "
+                            accept="image/png,image/jpg,image/jpeg">
                         @error('bukti')
                             <div class="invalid-feedback">
                                 {{ $message }}

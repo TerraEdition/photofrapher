@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Booking;
+use App\Models\Gallery;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
 
 class BookingController extends Controller
 {
@@ -91,13 +94,56 @@ class BookingController extends Controller
 
     public function gallery($slug)
     {
+        $id = Booking::select('id')->where('slug', $slug)->first();
+        if (empty($id)) abort(404);
         $data = [
-            'data' => Booking::with(['User:id,name,phone,email', 'Package:id,package,price'])
-                ->where('slug', $slug)
-                ->orderBy('id', 'desc')
-                ->first(),
-            'slug' => $slug
+            'data' => Gallery::where('booking_id', $id->id)->get(),
+            'slug' => $slug,
         ];
         return view("Backend.Booking.Gallery", $data);
+    }
+    public function store_gallery(Request $req, $slug)
+    {
+        try {
+            $id = Booking::select('id')->where('slug', $slug)->first();
+            if (empty($id)) abort(404);
+            foreach ($req->file('gallery') as $k => $r) {
+                $data = new Gallery();
+                $name = Carbon::now()->timestamp . '_' . $k . '.' . $r->getClientOriginalExtension();
+                $r->storeAs('Gallery/' . $slug, $name);
+                $data->file = $name;
+                $data->booking_id = $id->id;
+                $data->save();
+            }
+            session()->flash('msg', 'Data Berhasil di Simpan');
+            session()->flash('bg', 'alert-success');
+            return redirect()->back();
+        } catch (\Throwable $th) {
+            session()->flash('msg', 'Terjadi Kesalahan Pada Saat Menyimpan Data');
+            session()->flash('bg', 'alert-danger');
+            return redirect()->back()->withInput();
+        }
+    }
+    public function destroy_gallery(Request $req, $slug)
+    {
+        try {
+            $id = Booking::select('id')->where('slug', $slug)->first();
+            if (empty($id)) abort(404);
+            $data = Gallery::where('id', $req->input('id'))->first();
+            if (Storage::exists('Gallery/' . $slug . '/' . $data->file)) {
+                Storage::delete('Gallery/' . $slug . '/' . $data->file);
+                session()->flash('msg', 'File Berhasil di Hapus');
+                session()->flash('bg', 'alert-success');
+            } else {
+                session()->flash('msg', 'File tidak di temukan');
+                session()->flash('bg', 'alert-warning');
+            }
+            $data->delete();
+            return redirect()->back()->withInput();
+        } catch (\Throwable $th) {
+            session()->flash('msg', 'Terjadi Kesalahan Pada Saat Menyimpan Data');
+            session()->flash('bg', 'alert-danger');
+            return redirect()->back()->withInput();
+        }
     }
 }

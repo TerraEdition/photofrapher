@@ -56,6 +56,8 @@ Route::middleware(['auth', 'is.admin'])->group(function () {
         Route::get('/{slug}', [BookingController::class, 'detail']);
         Route::post('/{slug}/{status}', [BookingController::class, 'update']);
         Route::get('/{slug}/gallery', [BookingController::class, 'gallery']);
+        Route::post('/{slug}/gallery', [BookingController::class, 'store_gallery']);
+        Route::delete('/{slug}/gallery', [BookingController::class, 'destroy_gallery']);
         Route::delete('/delete/{slug}', [BookingController::class, 'destroy']);
     });
     Route::prefix('/users')->group(function () {
