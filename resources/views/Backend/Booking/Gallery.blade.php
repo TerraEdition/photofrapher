@@ -6,6 +6,7 @@
         <div class="alert {{ session()->get('bg') }}">{{ session()->get('msg') }}</div>
     @endif
     <div class="d-flex gap-3 d-flex justify-content-between">
+
         <a href="/booking/{{ $slug }}" class="btn btn-danger">Kembali</a>
     </div>
 @endsection
