@@ -52,16 +52,19 @@
             </table>
         </div>
     </div>
-    <div class="modal fade bg-dark" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
             <div class="modal-content bg-secondary">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-light" id="exampleModalLabel">Alur Kerja</h1>
+                    <div class="modal-title text-light" id="exampleModalLabel">
+                        <h1 class="fs-5"> Alur Kerja</h1>
+                        <small class="text-light">Silahkan di Klik untuk informasi lebih detail</small>
+                    </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="container">
+
                         <div class="d-flex gap-2 justify-content-start align-content-center flex-wrap">
                             <div class="bg-primary badge text-center" data-bs-toggle="popover" data-bs-title="Langkah 1"
                                 data-bs-content="Pemesanan sedang diproses. Mohon tunggu konfirmasi dari pihak kami.">
@@ -131,4 +134,11 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+        const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    </script>
 @endsection
