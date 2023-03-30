@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('payment', 30)->nullable();
             $table->string('slug', 150);
             $table->char('status', 1);
-            $table->date('created_at');
             $table->timestamps();
         });
     }
