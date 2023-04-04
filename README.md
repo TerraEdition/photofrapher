@@ -1,6 +1,6 @@
 ## Persiapan
 
--   Membutuhkan Git (Optional)
+-   Membutuhkan Git (Optional) => https://git-scm.com/downloads
 -   Membutuhkan Composer
 -   Membutuhkan XAMPP
 
