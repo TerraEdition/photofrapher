@@ -1,9 +1,28 @@
 ## Persiapan
-- Membutuhkan Git (Optional)
-- Membutuhkan Composer
-- Membutuhkan XAMPP
-- Membutuhkan Node JS (Optional)
 
+-   Membutuhkan Git (Optional)
+-   Membutuhkan Composer
+-   Membutuhkan XAMPP
+
+## Download Menggunakan GIT (TERMINAL)
+
+-   buka terminal di tempat project yang ingin di letak kan
+-   ketikkan :
+    -   git clone https://github.com/TerraEdition/photographer.git
+-   lanjut ke cara penggunaan
+
+## Perbarui Aplikasi Menggunakan GIT (TERMINAL)
+
+-   buka terminal di folder project
+-   ketikkan :
+    -   git pull
+    -   php artisan migrate
+    -   php artisan serve
+
+## Keuntungan GIT
+
+-   tidak perlu mendownload ulang, jika ada perubahan aplikasi.
+-   tidak perlu menjalankan perintah seperti proses install pertama kali.
 
 ## Cara Penggunaan
 

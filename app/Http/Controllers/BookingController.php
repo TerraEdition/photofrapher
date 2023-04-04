@@ -65,7 +65,7 @@ class BookingController extends Controller
             session()->flash('msg', 'Data Berhasil di Ubah');
             session()->flash('bg', 'alert-success');
         } catch (\Throwable $th) {
-            session()->flash('msg', 'Terjadi Kesalahan Pada Saat Menyimpan Data ');
+            session()->flash('msg', 'Terjadi Kesalahan Pada Saat Perbarui Data ');
             session()->flash('bg', 'alert-danger');
         }
         return redirect()->back();

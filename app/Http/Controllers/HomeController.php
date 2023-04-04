@@ -45,7 +45,7 @@ class HomeController extends Controller
         try {
             $paket = Package::where('slug', $slug)->first();
             if (empty($paket)) abort(404);
-            $data = Booking::where();
+            $data = new Booking();
             $data->user_id = Auth::user()->id;
             $data->package_id = $paket->id;
             $data->date = $req->tanggal;
