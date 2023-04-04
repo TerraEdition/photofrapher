@@ -29,7 +29,7 @@ class AuthController extends Controller
             session()->flash('bg', 'alert-success');
             return redirect()->to('login');
         } catch (\Throwable $th) {
-            session()->flash('msg', 'Akun Gagal di Mendaftar');
+            session()->flash('msg', 'Akun Gagal Mendaftar');
             session()->flash('bg', 'alert-danger');
             return redirect()->back();
         }

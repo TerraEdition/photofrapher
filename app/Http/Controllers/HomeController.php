@@ -79,7 +79,7 @@ class HomeController extends Controller
             session()->flash('bg', 'alert-success');
             return redirect()->to('account');
         } catch (\Throwable $th) {
-            session()->flash('msg', 'Terjadi Kesalahan Pada Saat Menyimpan Data');
+            session()->flash('msg', 'Terjadi Kesalahan Pada Saat Mengupload');
             session()->flash('bg', 'alert-danger');
             return redirect()->back()->withInput();
         }
@@ -96,7 +96,7 @@ class HomeController extends Controller
             session()->flash('bg', 'alert-success');
             return redirect()->to('account');
         } catch (\Throwable $th) {
-            session()->flash('msg', 'Terjadi Kesalahan Pada Saat Menyimpan Data');
+            session()->flash('msg', 'Terjadi Kesalahan Pada Membatalkan');
             session()->flash('bg', 'alert-danger');
             return redirect()->back();
         }
