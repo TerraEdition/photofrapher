@@ -49,7 +49,6 @@ class HomeController extends Controller
             $data->user_id = Auth::user()->id;
             $data->package_id = $paket->id;
             $data->date = $req->tanggal;
-            $data->created_at = date("Y-m-d");
             $data->time = $req->jam;
             $data->locate = $req->lokasi;
             $data->status = '1';
